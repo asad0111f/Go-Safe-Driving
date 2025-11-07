@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { forwardRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const linkButtonStyles = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:pointer-events-none disabled:opacity-50',
@@ -22,14 +23,21 @@ const linkButtonStyles = cva(
   },
 );
 
-type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & { href?: string };
 
 export interface LinkButtonProps extends VariantProps<typeof linkButtonStyles>, Omit<AnchorProps, 'color'> {}
 
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
-    return <a ref={ref} className={linkButtonStyles({ variant, size, className })} {...props} />;
+  ({ className, variant, size, href, ...props }, ref) => {
+    const isInternal = !!href && href.startsWith('/');
+    const classes = linkButtonStyles({ variant, size, className });
+    if (isInternal) {
+      // Use client-side routing for internal links to avoid 404s on reload
+      return (
+        <Link ref={ref as any} to={href!} className={classes} {...(props as any)} />
+      );
+    }
+    return <a ref={ref} href={href} className={classes} {...props} />;
   },
 );
 LinkButton.displayName = 'LinkButton';
-
