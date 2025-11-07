@@ -3,6 +3,7 @@ import { Canonical, SocialMeta } from '@/lib/seo';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
 import { Button } from '@/components/Button';
+import { LinkButton } from '@/components/LinkButton';
 import FadeIn from '@/components/motion/FadeIn';
 import { Disclosure } from '@headlessui/react';
 import { BadgeCheck, RefreshCw, Car, Navigation, Route, ChevronDown } from 'lucide-react';
@@ -96,9 +97,9 @@ export default function Services() {
                 <p className="mt-3 text-sm text-neutral-600">{s.length}</p>
                 <div className="mt-5">
                   <MicroBounce>
-                    <Button as="a" href="/contact" className="w-full text-center">
+                    <LinkButton href="/contact" className="w-full text-center">
                       Book this service
-                    </Button>
+                    </LinkButton>
                   </MicroBounce>
                 </div>
               </Card>

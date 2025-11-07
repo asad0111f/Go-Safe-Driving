@@ -3,6 +3,7 @@ import { Canonical, JsonLd, SocialMeta } from '@/lib/seo';
 import { motion } from 'framer-motion';
 import Card from '@/components/Card';
 import { Button } from '@/components/Button';
+import { LinkButton } from '@/components/LinkButton';
 import Section from '@/components/Section';
 import ResponsiveImage from '@/components/media/ResponsiveImage';
 import { heroCar } from '@/assets/placeholders';
@@ -145,7 +146,7 @@ export default function Home() {
               </ul>
               <div className="mt-5">
                 <MicroBounce>
-                  <Button as="a" href="/contact">Book now</Button>
+                  <LinkButton href="/contact">Book now</LinkButton>
                 </MicroBounce>
               </div>
             </Card>
@@ -160,7 +161,7 @@ export default function Home() {
               </ul>
               <div className="mt-5">
                 <MicroBounce>
-                  <Button as="a" href="/contact">Book now</Button>
+                  <LinkButton href="/contact">Book now</LinkButton>
                 </MicroBounce>
               </div>
             </Card>
@@ -175,7 +176,7 @@ export default function Home() {
               </ul>
               <div className="mt-5">
                 <MicroBounce>
-                  <Button as="a" href="/contact">Book now</Button>
+                  <LinkButton href="/contact">Book now</LinkButton>
                 </MicroBounce>
               </div>
             </Card>
@@ -183,7 +184,7 @@ export default function Home() {
         </div>
         <div className="mt-6">
           <MicroBounce>
-            <Button variant="secondary" as="a" href="/services">View all Services</Button>
+            <LinkButton variant="secondary" href="/services">View all Services</LinkButton>
           </MicroBounce>
         </div>
       </Section>

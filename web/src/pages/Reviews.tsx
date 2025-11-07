@@ -3,6 +3,7 @@ import { Canonical, SocialMeta } from '@/lib/seo';
 import Section from '@/components/Section';
 import TestimonialCard from '@/components/TestimonialCard';
 import { Button } from '@/components/Button';
+import { LinkButton } from '@/components/LinkButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Star } from 'lucide-react';
@@ -120,7 +121,7 @@ export default function Reviews() {
             </span>
             <span className="text-sm text-neutral-800">{avg} average • {total}+ reviews</span>
           </div>
-          <Button as="a" href="#" variant="secondary">Leave a Google Review</Button>
+          <LinkButton href="#" variant="secondary">Leave a Google Review</LinkButton>
         </div>
       </Section>
 
