@@ -144,9 +144,12 @@ export default function Home() {
                 <li>Core maneuvers + parking</li>
                 <li>Test-day strategy</li>
               </ul>
-              <div className="mt-5">
+              <div className="mt-5 flex flex-wrap gap-2">
                 <MicroBounce>
-                  <LinkButton href="/contact">Book now</LinkButton>
+                  <LinkButton href="tel:+12897001347">Call Now</LinkButton>
+                </MicroBounce>
+                <MicroBounce>
+                  <LinkButton href="/contact" variant="secondary">Book now</LinkButton>
                 </MicroBounce>
               </div>
             </Card>
@@ -159,9 +162,12 @@ export default function Home() {
                 <li>Three-point turns mastered</li>
                 <li>Tight-space control</li>
               </ul>
-              <div className="mt-5">
+              <div className="mt-5 flex flex-wrap gap-2">
                 <MicroBounce>
-                  <LinkButton href="/contact">Book now</LinkButton>
+                  <LinkButton href="tel:+12897001347">Call Now</LinkButton>
+                </MicroBounce>
+                <MicroBounce>
+                  <LinkButton href="/contact" variant="secondary">Book now</LinkButton>
                 </MicroBounce>
               </div>
             </Card>
@@ -174,9 +180,12 @@ export default function Home() {
                 <li>Safe lane changes</li>
                 <li>Defensive spacing</li>
               </ul>
-              <div className="mt-5">
+              <div className="mt-5 flex flex-wrap gap-2">
                 <MicroBounce>
-                  <LinkButton href="/contact">Book now</LinkButton>
+                  <LinkButton href="tel:+12897001347">Call Now</LinkButton>
+                </MicroBounce>
+                <MicroBounce>
+                  <LinkButton href="/contact" variant="secondary">Book now</LinkButton>
                 </MicroBounce>
               </div>
             </Card>

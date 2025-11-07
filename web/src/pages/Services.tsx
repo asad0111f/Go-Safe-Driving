@@ -95,9 +95,14 @@ export default function Services() {
                   ))}
                 </ul>
                 <p className="mt-3 text-sm text-neutral-600">{s.length}</p>
-                <div className="mt-5">
+                <div className="mt-5 flex flex-col gap-2 sm:flex-row">
                   <MicroBounce>
-                    <LinkButton href="/contact" className="w-full text-center">
+                    <LinkButton href="tel:+12897001347" className="w-full text-center">
+                      Call Now
+                    </LinkButton>
+                  </MicroBounce>
+                  <MicroBounce>
+                    <LinkButton href="/contact" variant="secondary" className="w-full text-center">
                       Book this service
                     </LinkButton>
                   </MicroBounce>
