@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS variables for brand + gray palette */
+:root {
+  /* brand in HSL (h s% l%) */
+  --color-primary: 222 84% 56%; /* indigo-500 */
+  --color-accent: 158 64% 52%;  /* emerald-500 */
+  --color-muted: 215 16% 47%;   /* slate-500 */
+
+  /* neutral gray scale (Slate-like) */
+  --gray-50: 210 40% 98%;
+  --gray-100: 210 40% 96.1%;
+  --gray-200: 214 31% 91.4%;
+  --gray-300: 213 27% 84.7%;
+  --gray-400: 215 20.2% 65.1%;
+  --gray-500: 215 16.3% 46.9%;
+  --gray-600: 215 19.3% 34.5%;
+  --gray-700: 215 25% 26.7%;
+  --gray-800: 217 33% 17%;
+  --gray-900: 222 47.4% 11.2%;
+}
+
+/* Global resets and typography */
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-transparent text-neutral-900 antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue,
+      Arial, Noto Sans, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  }
+  h1, h2, h3, h4, h5, h6 { @apply font-bold tracking-tight leading-tight text-neutral-900; }
+  h1 { @apply text-4xl sm:text-5xl md:text-6xl; }
+  h2 { @apply text-3xl sm:text-4xl md:text-5xl; }
+  h3 { @apply text-2xl sm:text-3xl; }
+  h4 { @apply text-xl sm:text-2xl; }
+  h5 { @apply text-lg; }
+  h6 { @apply text-base; }
+}
+
+/* Site background: gradient layer + ultra-subtle mesh overlay */
+.site-bg {
+  position: relative;
+}
+.site-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gray-50)) 0%,
+    hsl(var(--gray-50)) 58%,
+    hsl(var(--color-primary) / 0.07) 58%,
+    hsl(var(--color-accent) / 0.07) 100%
+  );
+  z-index: -2;
+}
+.site-bg::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  /* dotted mesh using radial gradient */
+  background-image: radial-gradient(hsl(var(--gray-900) / 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+  /* fade mesh toward bottom for visual quiet */
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(120% 80% at 50% 0%, #000 40%, transparent 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Utility: card feel with soft shadow and rounded corners */
+@layer components {
+  .card { @apply rounded-2xl bg-white shadow-soft; }
+}
+
+/* Minimal line clamp utilities (no plugin) */
+@layer utilities {
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    background: white;
+    color: black;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 6px 24px -8px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+}

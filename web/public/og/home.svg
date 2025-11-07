@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef2ff"/>
+      <stop offset="100%" stop-color="#ecfeff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="1000" cy="120" r="140" fill="rgba(99,102,241,0.2)"/>
+  <circle cx="160" cy="540" r="160" fill="rgba(16,185,129,0.18)"/>
+  <text x="80" y="340" font-family="Inter,system-ui,sans-serif" font-size="54" fill="#111827" font-weight="800">Go Safe Driving</text>
+  <text x="80" y="390" font-family="Inter,system-ui,sans-serif" font-size="28" fill="#374151">Private driving lessons in Hamilton</text>
+</svg>
+

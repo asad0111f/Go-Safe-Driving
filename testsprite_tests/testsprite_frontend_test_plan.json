@@ -1,0 +1,136 @@
+[
+  {
+    "id": "test-001",
+    "title": "Home page should load successfully with all hero content",
+    "description": "Verify that the home page displays the hero section with title, description, call-to-action buttons, and hero image",
+    "steps": [
+      "Open the application at http://localhost:5173",
+      "Wait for page to load",
+      "Verify hero title is visible",
+      "Verify 'Call Now' button is present",
+      "Verify 'Book Lesson' button is present"
+    ]
+  },
+  {
+    "id": "test-002",
+    "title": "Navigation should work correctly between all pages",
+    "description": "Test routing to Services, About, Contact, Reviews, and Pricing pages",
+    "steps": [
+      "Navigate to home page",
+      "Click on 'Services' in navigation",
+      "Verify Services page loads",
+      "Click on 'About' in navigation",
+      "Verify About page loads",
+      "Click on 'Contact' in navigation",
+      "Verify Contact page loads",
+      "Click on 'Reviews' in navigation",
+      "Verify Reviews page loads",
+      "Click on 'Pricing' in navigation",
+      "Verify Pricing page loads"
+    ]
+  },
+  {
+    "id": "test-003",
+    "title": "Book Lesson modal should open and close correctly",
+    "description": "Verify that clicking the 'Book Lesson' button opens the booking modal and it can be closed",
+    "steps": [
+      "Navigate to home page",
+      "Click 'Book Lesson' button",
+      "Verify modal opens with 'Book a Lesson' title",
+      "Verify form fields are present (Name, Phone, Service Type, Date/Time)",
+      "Click close button (X)",
+      "Verify modal closes"
+    ]
+  },
+  {
+    "id": "test-004",
+    "title": "Booking form validation should work correctly",
+    "description": "Test that form validation prevents submission with invalid data",
+    "steps": [
+      "Open booking modal by clicking 'Book Lesson' button",
+      "Click 'Submit' without filling any fields",
+      "Verify error messages appear for required fields",
+      "Enter invalid phone number (e.g., 'abc')",
+      "Verify phone validation error appears",
+      "Enter valid name (minimum 2 characters)",
+      "Enter valid phone number",
+      "Select a service type",
+      "Select a date and time",
+      "Click 'Submit'",
+      "Verify form submits successfully and shows thank you message"
+    ]
+  },
+  {
+    "id": "test-005",
+    "title": "Booking form should show success message after submission",
+    "description": "Verify that a thank you message appears after successful form submission",
+    "steps": [
+      "Open booking modal",
+      "Fill in name field with 'John Doe'",
+      "Fill in phone field with '123-456-7890'",
+      "Select 'G2 Road-Test Prep' from service type dropdown",
+      "Select a future date and time",
+      "Click 'Submit' button",
+      "Wait for submission to complete",
+      "Verify 'Thanks! We'll confirm shortly.' message appears",
+      "Verify 'Close' button is present"
+    ]
+  },
+  {
+    "id": "test-006",
+    "title": "Services page should display content",
+    "description": "Verify that the Services page loads and displays service information",
+    "steps": [
+      "Navigate to /services using the navigation menu",
+      "Wait for page to load",
+      "Verify page loads successfully without errors",
+      "Verify service content is rendered"
+    ]
+  },
+  {
+    "id": "test-007",
+    "title": "Pricing page should display pricing cards",
+    "description": "Verify that pricing information is correctly displayed",
+    "steps": [
+      "Navigate to /pricing using the navigation menu",
+      "Wait for page to load",
+      "Verify Starter pricing card is visible",
+      "Verify Standard pricing card is visible",
+      "Verify Pro pricing card is visible"
+    ]
+  },
+  {
+    "id": "test-008",
+    "title": "Reviews page should display content",
+    "description": "Verify that customer testimonials page loads",
+    "steps": [
+      "Navigate to /reviews using the navigation menu",
+      "Wait for page to load",
+      "Verify page loads successfully",
+      "Verify testimonial content is displayed"
+    ]
+  },
+  {
+    "id": "test-009",
+    "title": "Contact page should display content",
+    "description": "Verify that the Contact page loads with contact information",
+    "steps": [
+      "Navigate to /contact using the navigation menu",
+      "Wait for page to load",
+      "Verify page loads successfully",
+      "Verify contact content is rendered"
+    ]
+  },
+  {
+    "id": "test-010",
+    "title": "About page should display company information",
+    "description": "Verify that the About page displays information about the driving school",
+    "steps": [
+      "Navigate to /about using the navigation menu",
+      "Wait for page to load",
+      "Verify page loads successfully",
+      "Verify about content is displayed"
+    ]
+  }
+]
+

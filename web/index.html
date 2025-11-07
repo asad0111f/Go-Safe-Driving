@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <title>Go Safe Driving</title>
+    <style>
+      /* Minimal pre-hydration loader */
+      #app-loading{display:grid;place-items:center;min-height:50vh}
+      .spin{width:32px;height:32px;border-radius:9999px;border:2px solid #d4d4d4;border-top-color:#2563eb;animation:spin .9s linear infinite}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      /* Accessible skip link: hidden until focused */
+      .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+      .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:#111827;color:#fff;border-radius:10px;z-index:1000}
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="root">
+      <div id="app-loading" aria-label="Loading">
+        <div class="spin"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+  </html>
