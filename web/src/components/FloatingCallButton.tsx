@@ -9,7 +9,7 @@ export default function FloatingCallButton() {
     >
       <MicroBounce>
         <a
-          href="tel:+1234567890"
+          href="tel:+12897001347"
           aria-label="Call Now"
           className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-soft hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         >
@@ -19,4 +19,3 @@ export default function FloatingCallButton() {
     </div>
   );
 }
-

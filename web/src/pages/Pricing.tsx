@@ -32,7 +32,7 @@ export default function Pricing() {
             </ul>
             <div className="mt-6 grid gap-2">
               <MicroBounce>
-                <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90" href="tel:+1234567890">Call Now</a>
+                <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90" href="tel:+12897001347">Call Now</a>
               </MicroBounce>
               <MicroBounce>
                 <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-medium text-neutral-900 hover:bg-neutral-50" href="/contact">Book Lesson</a>
@@ -55,7 +55,7 @@ export default function Pricing() {
             </ul>
             <div className="mt-6 grid gap-2">
               <MicroBounce>
-                <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90" href="tel:+1234567890">Call Now</a>
+                <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90" href="tel:+12897001347">Call Now</a>
               </MicroBounce>
               <MicroBounce>
                 <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-medium text-neutral-900 hover:bg-neutral-50" href="/contact">Book Lesson</a>
@@ -75,7 +75,7 @@ export default function Pricing() {
             </ul>
             <div className="mt-6 grid gap-2">
               <MicroBounce>
-                <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90" href="tel:+1234567890">Call Now</a>
+                <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90" href="tel:+12897001347">Call Now</a>
               </MicroBounce>
               <MicroBounce>
                 <a className="inline-flex h-10 w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-medium text-neutral-900 hover:bg-neutral-50" href="/contact">Book Lesson</a>
@@ -94,7 +94,7 @@ export default function Pricing() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <MicroBounce>
             <a
-              href="tel:+1234567890"
+              href="tel:+12897001347"
               className="inline-flex h-12 items-center justify-center rounded-2xl bg-primary px-6 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
             >
               Call Now

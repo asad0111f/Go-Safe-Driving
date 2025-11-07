@@ -40,7 +40,7 @@ export default function Home() {
           description:
             'Patient, 1-on-1 road-test prep, parking, and highway lessons for G2 & G drivers in Hamilton.',
           url: typeof window !== 'undefined' ? window.location.origin : undefined,
-          telephone: '+1-234-567-890',
+          telephone: '+1-289-700-1347',
           areaServed: 'Hamilton, ON',
           address: {
             '@type': 'PostalAddress',
@@ -72,7 +72,7 @@ export default function Home() {
             <div className="mt-6 flex gap-3">
               <MicroBounce>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+12897001347"
                   className="inline-flex h-12 items-center justify-center rounded-2xl bg-primary px-5 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
                 >
                   Call Now
@@ -221,17 +221,34 @@ export default function Home() {
       {/* Testimonials carousel */}
       <Section title="What learners say" subtitle="Real feedback from local drivers.">
         <Swiper spaceBetween={16} slidesPerView={1} breakpoints={{ 640: { slidesPerView: 1.2 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}>
-          {[1,2,3,4,5].map((i) => (
-            <SwiperSlide key={i}>
-              <TestimonialCard
-                name={`Student ${i}`}
-                rating={5}
-                date="Aug 2024"
-              >
-                Excellent, patient instruction. I felt prepared and passed confidently!
-              </TestimonialCard>
-            </SwiperSlide>
-          ))}
+          <SwiperSlide>
+            <TestimonialCard
+              name="Ava C."
+              isLocalGuide
+              rating={5}
+              date="Sep 2024"
+            >
+              Super patient and clear instruction. Practiced the exact test routes and felt calm on test day. Passed first try!
+            </TestimonialCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              name="Jasmin K."
+              rating={5}
+              date="Aug 2024"
+            >
+              Great coaching style. Parking finally clicked for me after struggling for months. Highly recommend!
+            </TestimonialCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              name="Marco T."
+              rating={5}
+              date="Aug 2024"
+            >
+              Very helpful lessons on highway merging and lane changes. I feel way more confident now.
+            </TestimonialCard>
+          </SwiperSlide>
         </Swiper>
       </Section>
 
@@ -243,7 +260,7 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <MicroBounce>
               <a
-                href="tel:+1234567890"
+                href="tel:+12897001347"
                 className="inline-flex h-12 items-center justify-center rounded-2xl bg-primary px-6 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
               >
                 Call Now

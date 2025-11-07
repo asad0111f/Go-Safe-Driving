@@ -60,7 +60,7 @@ export default function Header({ sticky = false }: HeaderProps) {
         {/* Actions (desktop) */}
         <div className="hidden items-center gap-3 md:flex">
           <a
-            href="tel:+1234567890"
+            href="tel:+12897001347"
             aria-label="Call Now"
             className="inline-flex h-10 items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
           >
@@ -145,7 +145,7 @@ export default function Header({ sticky = false }: HeaderProps) {
                   ))}
                   <div className="mt-2 grid gap-2 px-0.5">
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+12897001347"
                       aria-label="Call Now"
                       className="inline-flex h-10 items-center justify-center rounded-2xl bg-primary px-4 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
                     >

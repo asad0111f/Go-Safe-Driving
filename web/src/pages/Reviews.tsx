@@ -124,33 +124,7 @@ export default function Reviews() {
         </div>
       </Section>
 
-      {/* Featured review */}
-      {featured && (
-        <Section className="py-6" decorativeBlobs={false}>
-          <div className="rounded-2xl ring-1 ring-accent/25">
-            <div className="p-1">
-              <TestimonialCard name={featured.name} rating={featured.rating} date={featured.date} isLocalGuide={featured.isLocalGuide}>
-                <ReviewText text={featured.text} />
-              </TestimonialCard>
-            </div>
-          </div>
-        </Section>
-      )}
-
-      {/* Carousel near top */}
-      <Section className="py-6" decorativeBlobs={false}>
-        <div role="region" aria-roledescription="carousel" aria-label="Learner testimonials">
-        <Swiper spaceBetween={16} slidesPerView={1} breakpoints={{ 640: { slidesPerView: 1.2 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}>
-          {REVIEWS.map((r) => (
-            <SwiperSlide key={r.id}>
-              <TestimonialCard name={r.name} rating={r.rating} date={r.date} isLocalGuide={r.isLocalGuide}>
-                <ReviewText text={r.text} />
-              </TestimonialCard>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        </div>
-      </Section>
+      
 
       {/* Filters */}
       <Section className="py-6" decorativeBlobs={false}>
@@ -190,7 +164,7 @@ export default function Reviews() {
       <Section decorativeBlobs={false} className="py-8">
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
-            href="tel:+1234567890"
+            href="tel:+12897001347"
             className="inline-flex h-12 items-center justify-center rounded-2xl bg-primary px-6 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
             aria-label="Call Now"
           >

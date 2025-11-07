@@ -58,7 +58,7 @@ export default function Contact() {
         <div className="mb-4">
           <span className="text-sm text-neutral-800">Prefer to talk?</span>
           <a
-            href="tel:+1234567890"
+            href="tel:+12897001347"
             className="ml-3 inline-flex h-9 items-center justify-center rounded-2xl bg-primary px-3 text-xs font-medium text-white shadow-soft hover:bg-primary/90"
           >
             Call Now

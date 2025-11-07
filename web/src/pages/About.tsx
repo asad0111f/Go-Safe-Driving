@@ -136,7 +136,7 @@ export default function About() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <MicroBounce>
             <a
-              href="tel:+1234567890"
+              href="tel:+12897001347"
               className="inline-flex h-12 items-center justify-center rounded-2xl bg-primary px-6 text-sm font-medium text-white shadow-soft hover:bg-primary/90"
             >
               Call Now
