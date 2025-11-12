@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/", "has": [{"type":"host","value":"gosafedriving.ca"}], "destination": "https://www.gosafedriving.ca/", "permanent": true },
+    { "source": "/:path*", "has": [{"type":"host","value":"gosafedriving.ca"}], "destination": "https://www.gosafedriving.ca/:path*", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/sitemap.xml", "headers": [{ "key": "Cache-Control", "value": "max-age=0, s-maxage=60, stale-while-revalidate=300" }] },
+    { "source": "/robots.txt", "headers": [{ "key": "Cache-Control", "value": "max-age=0, s-maxage=60, stale-while-revalidate=300" }] }
+  ]
+}
+
