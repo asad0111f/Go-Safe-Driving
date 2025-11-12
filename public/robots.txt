@@ -1,0 +1,9 @@
+# Robots exclusion standard
+User-agent: *
+Allow: /
+
+# Update with your production domain
+Sitemap: https://www.gosafedriving.ca/sitemap.xml
+
+# Preferred host
+Host: www.gosafedriving.ca

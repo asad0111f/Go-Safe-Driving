@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-import { Canonical } from '@/lib/seo';
+import { Canonical, SocialMeta } from '@/lib/seo';
 import Section from '@/components/Section';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
 export default function Policies() {
   return (
@@ -11,6 +12,11 @@ export default function Policies() {
         <meta name="description" content="Privacy and terms for Go Safe Driving. We use a cookie-light approach and respect your privacy." />
       </Helmet>
       <Canonical />
+      <SocialMeta
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+      />
 
       <Section title="Privacy" subtitle="Cookie-light and respectful of your data." decorativeBlobs={false}>
         <div className="prose prose-neutral max-w-none">
@@ -40,7 +46,9 @@ export default function Policies() {
         </div>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
     </>
   );
 }

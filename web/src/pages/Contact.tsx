@@ -8,7 +8,9 @@ import Section from '@/components/Section';
 import FormField from '@/components/FormField';
 import Toast from '@/components/Toast';
 import { useState } from 'react';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+import { trackEvent } from '@/lib/analytics';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
 const ContactSchema = z.object({
   name: z.string().min(2, 'Please enter your name'),
@@ -39,21 +41,24 @@ export default function Contact() {
     await new Promise((r) => setTimeout(r, 700));
     setToastOpen(true);
     reset();
+    trackEvent('contact_submit');
   };
 
   return (
     <>
       <Helmet>
-        <title>Contact — Go Safe Driving</title>
+        <title>Contact GoSafe Driving | Book Driving Lessons in Hamilton</title>
+        <meta name="description" content="Book your driving lessons online or call now for availability." />
       </Helmet>
       <Canonical />
       <SocialMeta
-        title="Contact — Go Safe Driving"
-        description="Call or message to get started. Quick replies."
-        imagePath="/og/contact.svg"
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+        pageUrl="https://www.gosafedriving.ca/contact"
       />
 
-      <Section title="Get in touch" subtitle="Tell us a bit about your goals and schedule. We'll reply quickly to confirm.">
+      <Section title="Contact GoSafe Driving – Driving Lessons in Hamilton" subtitle="Tell us a bit about your goals and schedule. We'll reply quickly to confirm.">
         {/* Prefer to talk? */}
         <div className="mb-4">
           <span className="text-sm text-neutral-800">Prefer to talk?</span>
@@ -99,7 +104,9 @@ export default function Contact() {
         </div>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
 
       <Toast show={toastOpen} onClose={() => setToastOpen(false)} message={'Thanks — we\'ll confirm shortly.'} />
     </>

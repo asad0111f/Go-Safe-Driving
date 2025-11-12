@@ -19,7 +19,7 @@ export default function TestimonialCard({ name, avatarUrl, isLocalGuide = false,
       <Card hoverLift className="p-5">
         <div className="flex items-center gap-3">
           {avatarUrl ? (
-            <img src={avatarUrl} alt={name} className="h-10 w-10 rounded-full object-cover" />
+            <img src={avatarUrl} alt={`${name} profile photo`} className="h-10 w-10 rounded-full object-cover" loading="lazy" decoding="async" width="40" height="40" />
           ) : (
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-sm font-medium text-neutral-700">
               {name.charAt(0)}

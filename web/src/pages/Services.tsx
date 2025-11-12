@@ -8,7 +8,8 @@ import FadeIn from '@/components/motion/FadeIn';
 import { Disclosure } from '@headlessui/react';
 import { BadgeCheck, RefreshCw, Car, Navigation, Route, ChevronDown } from 'lucide-react';
 import MicroBounce from '@/components/motion/MicroBounce';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
 type Service = {
   key: string;
@@ -60,22 +61,23 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>Services — Go Safe Driving</title>
+        <title>Driving Lesson Packages & Road Test Prep | GoSafe Driving</title>
         <meta
           name="description"
-          content="G2/G road-test prep, refresher lessons, parking intensive, and highway confidence coaching in Hamilton."
+          content="Affordable G2, G, and beginner driving lessons with flexible schedules."
         />
       </Helmet>
       <SocialMeta
-        title="Services — Go Safe Driving"
-        description="G2/G road-test prep, refresher lessons, parking intensive, and highway confidence coaching in Hamilton."
-        imagePath="/og/services.svg"
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+        pageUrl="https://www.gosafedriving.ca/services"
       />
       <Canonical />
 
       {/* Intro */}
       <Section
-        title="Focused services for real progress"
+        title="Driving Lessons in Hamilton – Services & Packages"
         subtitle="Choose a targeted path or mix and match to fit your goals."
       >
         {/* Services Grid */}
@@ -179,7 +181,9 @@ export default function Services() {
         </div>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
     </>
   );
 }

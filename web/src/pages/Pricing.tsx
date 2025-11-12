@@ -6,7 +6,8 @@ import Badge from '@/components/Badge';
 import { Button } from '@/components/Button';
 import { Check } from 'lucide-react';
 import MicroBounce from '@/components/motion/MicroBounce';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
 export default function Pricing() {
   return (
@@ -16,9 +17,15 @@ export default function Pricing() {
         <meta name="description" content="Clear, upfront pricing for driving lessons in Hamilton. No hidden fees." />
       </Helmet>
       <Canonical />\n      <JsonLd data={{'@context':'https://schema.org','@type':'ItemList',name:'Lesson Packages',itemListElement:[{'@type':'Product',name:'Starter',description:'60-min 1-on-1 lesson for beginners',offers:{'@type':'Offer',price:'49',priceCurrency:'CAD',availability:'https://schema.org/InStock'}},{'@type':'Product',name:'Focused Prep',description:'Three 60-min lessons for test prep',offers:{'@type':'Offer',price:'129',priceCurrency:'CAD',availability:'https://schema.org/InStock'}},{'@type':'Product',name:'Confidence Pack',description:'Six 60-min lessons plus mock test',offers:{'@type':'Offer',price:'249',priceCurrency:'CAD',availability:'https://schema.org/InStock'}}]} } />\n
+      <SocialMeta
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+        pageUrl="https://www.gosafedriving.ca/pricing"
+      />
       \n      <JsonLd data={{'@context':'https://schema.org','@type':'ItemList',name:'Lesson Packages',itemListElement:[{'@type':'Product',name:'Starter',description:'60-min 1-on-1 lesson for beginners',offers:{'@type':'Offer',price:'49',priceCurrency:'CAD',availability:'https://schema.org/InStock'}},{'@type':'Product',name:'Focused Prep',description:'Three 60-min lessons for test prep',offers:{'@type':'Offer',price:'129',priceCurrency:'CAD',availability:'https://schema.org/InStock'}},{'@type':'Product',name:'Confidence Pack',description:'Six 60-min lessons plus mock test',offers:{'@type':'Offer',price:'249',priceCurrency:'CAD',availability:'https://schema.org/InStock'}}]} } />
 
-      <Section title="Simple plans, real value" subtitle="Choose the plan that fits your goals.">
+      <Section title="Driving Lessons in Hamilton – Pricing" subtitle="Choose the plan that fits your goals.">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Starter */}
           <Card className="p-6">
@@ -111,7 +118,9 @@ export default function Pricing() {
         </div>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
     </>
   );
 }

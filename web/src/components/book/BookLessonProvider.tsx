@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { SERVICE_TYPES, submitLessonBooking } from '@/lib/booking';
 import { X } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 type Prefill = Partial<{ serviceType: string; preferredDateTime: string }>;
 
@@ -41,6 +42,7 @@ export default function BookLessonProvider({ children }: { children: React.React
     setInitial(prefill ?? {});
     setThankYou(false);
     setOpen(true);
+    trackEvent('book_lesson_open');
   };
 
   const value = useMemo(() => ({ open }), []);
@@ -80,6 +82,7 @@ export default function BookLessonProvider({ children }: { children: React.React
                   initial={initial}
                   onSubmitted={() => {
                     setThankYou(true);
+                    trackEvent('book_lesson_submit');
                   }}
                 />
               )}
@@ -148,4 +151,3 @@ function BookLessonForm({ initial, onSubmitted }: { initial?: Prefill; onSubmitt
     </form>
   );
 }
-

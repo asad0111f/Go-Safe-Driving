@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import { Canonical } from '@/lib/seo';
+import { Canonical, SocialMeta } from '@/lib/seo';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
 import MicroBounce from '@/components/motion/MicroBounce';
 import { Link } from 'react-router-dom';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
 export default function NotFound() {
   return (
@@ -14,6 +15,11 @@ export default function NotFound() {
         <meta name="robots" content="noindex" />
       </Helmet>
       <Canonical />
+      <SocialMeta
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+      />
       <Section decorativeBlobs={false} className="py-16">
         <Card className="mx-auto max-w-xl p-8 text-center">
           <h1>We can’t find that page</h1>
@@ -33,7 +39,9 @@ export default function NotFound() {
         </Card>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
     </>
   );
 }

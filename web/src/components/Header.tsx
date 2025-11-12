@@ -36,7 +36,7 @@ export default function Header({ sticky = false }: HeaderProps) {
       <div className="container flex h-16 items-center justify-between" role="navigation" aria-label="Primary">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2 font-semibold tracking-tight text-neutral-900">
-          <img src="/brand/logo.png?v=2" alt="Go Safe Driving" className="h-12 w-auto" width="180" height="40" />
+          <img src="/brand/logo.png?v=2" alt="Go Safe Driving logo" className="h-12 w-auto" width="180" height="40" decoding="async" loading="lazy" />
         </Link>
 
         {/* Nav links (desktop) */}
@@ -117,7 +117,7 @@ export default function Header({ sticky = false }: HeaderProps) {
                 <div className="flex h-16 items-center justify-between px-4">
                   <Dialog.Title className="sr-only" id="mobile-menu-title">Main menu</Dialog.Title>
                   <Link to="/" className="font-semibold" onClick={() => setOpen(false)}>
-                    <img src="/brand/logo.png?v=2" alt="Go Safe Driving" className="h-11 w-auto" width="160" height="36" />
+                    <img src="/brand/logo.png?v=2" alt="Go Safe Driving logo" className="h-11 w-auto" width="160" height="36" loading="lazy" decoding="async" />
                   </Link>
                   <button
                     aria-label="Close menu"

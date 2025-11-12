@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Canonical, JsonLd, SocialMeta } from '@/lib/seo';
+import { BUSINESS, SOCIAL_LINKS } from '@/lib/site';
+import { REVIEWS, AGGREGATE } from '@/lib/reviews';
 import { motion } from 'framer-motion';
 import Card from '@/components/Card';
 import { Button } from '@/components/Button';
@@ -24,40 +26,69 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Private Driving Lessons in Hamilton | GoSafe Driving</title>
-        <meta name="description" content="Patient, 1-on-1 road-test prep, parking, and highway lessons for G2 & G drivers." />
+        <title>GoSafe Driving | Driving Lessons in Hamilton, Ontario</title>
+        <meta name="description" content="Modern, patient 1-on-1 driving lessons in Hamilton. G2 & G road test prep with professional instructors." />
       </Helmet>
       <SocialMeta
-        title="Private Driving Lessons in Hamilton | GoSafe Driving"
-        description="Patient, 1-on-1 road-test prep, parking, and highway lessons for G2 & G drivers."
-        imagePath="/og/home.svg"
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+        pageUrl="https://www.gosafedriving.ca/"
       />
       <Canonical />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
-          '@type': 'LocalBusiness',
-          name: 'Go Safe Driving',
-          description:
-            'Patient, 1-on-1 road-test prep, parking, and highway lessons for G2 & G drivers in Hamilton.',
-          url: typeof window !== 'undefined' ? window.location.origin : undefined,
-          telephone: '+1-289-700-1347',
-          areaServed: 'Hamilton, ON',
+          '@type': 'DrivingSchool',
+          '@id': `${BUSINESS.url}#driving-school`,
+          name: BUSINESS.name,
+          url: BUSINESS.url,
+          logo: BUSINESS.logo,
+          image: [BUSINESS.image, BUSINESS.logo],
+          telephone: BUSINESS.phone,
+          email: BUSINESS.email,
           address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Hamilton',
-            addressRegion: 'ON',
-            addressCountry: 'CA',
+            addressLocality: BUSINESS.address.locality,
+            addressRegion: BUSINESS.address.region,
+            addressCountry: BUSINESS.address.country,
           },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: BUSINESS.geo.lat,
+            longitude: BUSINESS.geo.lon,
+          },
+          areaServed: [
+            'Hamilton, ON',
+            'Burlington, ON',
+            'Stoney Creek, ON',
+            'Ancaster, ON',
+          ],
+          serviceArea: [
+            { '@type': 'Place', name: 'Hamilton, ON' },
+            { '@type': 'Place', name: 'Burlington, ON' },
+            { '@type': 'Place', name: 'Stoney Creek, ON' },
+            { '@type': 'Place', name: 'Ancaster, ON' },
+          ],
           openingHoursSpecification: [
             { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '08:00', closes: '20:00' },
             { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday'], opens: '09:00', closes: '17:00' },
           ],
-          sameAs: [
-            'https://facebook.com/your-page',
-            'https://instagram.com/your-handle',
-            'https://twitter.com/your-handle'
-          ],
+          priceRange: '$$',
+          hasMap: BUSINESS.mapUrl,
+          sameAs: SOCIAL_LINKS,
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: AGGREGATE.avg,
+            reviewCount: AGGREGATE.total,
+          },
+          review: REVIEWS.map((r) => ({
+            '@type': 'Review',
+            author: { '@type': 'Person', name: r.name },
+            datePublished: r.dateIso,
+            reviewBody: r.text,
+            reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+          })),
         }}
       />
 
@@ -260,6 +291,72 @@ export default function Home() {
             </TestimonialCard>
           </SwiperSlide>
         </Swiper>
+      </Section>
+
+      {/* FAQ */}
+      <Section title="Frequently asked questions" subtitle="Everything you need to know about our driving lessons in Hamilton.">
+        {(() => {
+          const faqs = [
+            {
+              q: 'How much do driving lessons cost?',
+              a: 'See our Pricing page for up-to-date packages and rates. We keep pricing clear and upfront.'
+            },
+            {
+              q: 'What\'s the difference between G2 and G road test prep?',
+              a: 'G2 focuses on city driving, core maneuvers, parking, and road-test strategies. G adds highway skills, advanced observation, and complex intersections.'
+            },
+            {
+              q: 'How long is each lesson?',
+              a: 'Most lessons are 60–90 minutes depending on the focus. We\'ll recommend a plan after your first session.'
+            },
+            {
+              q: 'Do you offer pickup and drop-off? Which areas?',
+              a: 'Yes—within our service area: Hamilton, Burlington, Stoney Creek, and Ancaster (subject to availability).'
+            },
+            {
+              q: 'Can I use the lesson vehicle for my road test?',
+              a: 'Yes—subject to availability. Ask about car-for-test pricing when you book.'
+            },
+            {
+              q: 'What is your reschedule/cancellation policy?',
+              a: 'We have a 24-hour reschedule policy. Late cancellations or no-shows may incur a fee.'
+            },
+            {
+              q: 'How do I book a lesson?',
+              a: 'Use the Contact page to request a time, or call us to discuss availability.'
+            },
+            {
+              q: 'Which payment methods do you accept?',
+              a: 'E-transfer and cash are accepted. Receipts available on request.'
+            },
+          ];
+          return (
+            <div>
+              <div className="mx-auto max-w-3xl divide-y divide-neutral-200 rounded-2xl bg-white/70 shadow-soft">
+                {faqs.map((item, i) => (
+                  <details key={i} className="group px-4" aria-label={`FAQ ${i + 1}`}>
+                    <summary className="flex cursor-pointer list-none items-center justify-between py-4 text-left text-sm font-medium text-neutral-900">
+                      {item.q}
+                      <span className="ml-3 select-none text-neutral-400 group-open:rotate-180">▾</span>
+                    </summary>
+                    <div className="pb-4 text-sm text-neutral-700">{item.a}</div>
+                  </details>
+                ))}
+              </div>
+              <JsonLd
+                data={{
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: faqs.map((f) => ({
+                    '@type': 'Question',
+                    name: f.q,
+                    acceptedAnswer: { '@type': 'Answer', text: f.a },
+                  })),
+                }}
+              />
+            </div>
+          );
+        })()}
       </Section>
 
       {/* Final CTA banner */}

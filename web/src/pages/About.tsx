@@ -9,27 +9,29 @@ import MicroBounce from '@/components/motion/MicroBounce';
 import ResponsiveImage from '@/components/media/ResponsiveImage';
 import { heroLearner, heroCar } from '@/assets/placeholders';
 import { Shield, MapPin, BookOpen, Award } from 'lucide-react';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
 export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — Go Safe Driving</title>
-        <meta name="description" content="Patient, safety-first private lessons in Hamilton. Local test route expertise and calm coaching style." />
+        <title>About GoSafe Driving | Certified Instructors in Hamilton</title>
+        <meta name="description" content="Learn to drive safely and confidently with certified driving instructors." />
       </Helmet>
       <Canonical />
       <SocialMeta
-        title="About — Go Safe Driving"
-        description="Calm, patient coaching in Hamilton with local test route expertise."
-        imagePath="/og/about.svg"
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+        pageUrl="https://www.gosafedriving.ca/about"
       />
 
       {/* Intro + portrait */}
       <Section className="pt-6">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <h1>Hi, I’m your coach</h1>
+            <h1>About GoSafe Driving – Driving Lessons in Hamilton</h1>
             <p className="mt-4 text-lg text-neutral-700">
               I teach modern, patient, 1‑on‑1 lessons that build real‑world skills and confidence. My focus is safety,
               calm coaching, and practical prep for Hamilton’s test routes.
@@ -153,7 +155,9 @@ export default function About() {
         </div>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
     </>
   );
 }

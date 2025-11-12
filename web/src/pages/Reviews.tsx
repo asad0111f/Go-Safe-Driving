@@ -8,59 +8,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Star } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import TrainingGallery from '@/components/TrainingGallery';
+import { lazy, Suspense } from 'react';
+import { REVIEWS, AGGREGATE } from '@/lib/reviews';
+const TrainingGallery = lazy(() => import('@/components/TrainingGallery'));
 
-type Review = {
-  id: string;
-  name: string;
-  rating: 1 | 2 | 3 | 4 | 5;
-  date: string;
-  text: string;
-  isLocalGuide?: boolean;
-  avatarUrl?: string;
-  featured?: boolean;
-};
-
-const REVIEWS: Review[] = [
-  {
-    id: 'r1',
-    name: 'Ava C.',
-    rating: 5,
-    date: 'Sep 2024',
-    text: 'Super patient and clear instruction. Practiced the exact test routes and felt calm on test day. Passed first try!',
-    isLocalGuide: true,
-    featured: true,
-  },
-  {
-    id: 'r2',
-    name: 'Jasmin K.',
-    rating: 5,
-    date: 'Aug 2024',
-    text: 'Great coaching style. Parking finally clicked for me after struggling for months. Highly recommend!',
-  },
-  {
-    id: 'r3',
-    name: 'Marco T.',
-    rating: 5,
-    date: 'Aug 2024',
-    text: 'Very helpful lessons on highway merging and lane changes. I feel way more confident now.',
-  },
-  {
-    id: 'r4',
-    name: 'Priya R.',
-    rating: 4,
-    date: 'Jul 2024',
-    text: 'Flexible scheduling and calm feedback every lesson. Awesome experience overall!',
-  },
-  {
-    id: 'r5',
-    name: 'Samir A.',
-    rating: 5,
-    date: 'Jul 2024',
-    text: 'Test prep was spot-on. Practiced maneuvers and observation. The mock test helped a lot.',
-    isLocalGuide: true,
-  },
-];
+type Review = typeof REVIEWS[number];
 
 function ReviewText({ text }: { text: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -84,8 +36,8 @@ export default function Reviews() {
   const [ratingFilter, setRatingFilter] = useState<'all' | 5 | 4 | 3>('all');
   const [localGuideOnly, setLocalGuideOnly] = useState(false);
 
-  const avg = 4.9;
-  const total = 120;
+  const avg = AGGREGATE.avg;
+  const total = AGGREGATE.total;
 
   const featured = REVIEWS.find((r) => r.featured);
 
@@ -105,13 +57,14 @@ export default function Reviews() {
       </Helmet>
       <Canonical />
       <SocialMeta
-        title="Reviews — Go Safe Driving"
-        description="Read real Google-style reviews from learners. Average rating and filterable testimonials."
-        imagePath="/og/reviews.svg"
+        title="GoSafe Driving | Driving Lessons in Hamilton"
+        description="Modern, patient 1-on-1 driving lessons in Hamilton. Book today!"
+        imagePath="https://www.gosafedriving.ca/cover.jpg"
+        pageUrl="https://www.gosafedriving.ca/reviews"
       />
 
       {/* Intro with stats + CTA */}
-      <Section title="What learners say" subtitle="Real feedback from local drivers.">
+      <Section title="Driving Lessons in Hamilton – Reviews" subtitle="Real feedback from local drivers.">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="inline-flex items-center gap-3 rounded-2xl bg-white/70 px-4 py-2 shadow-soft">
             <span className="flex items-center gap-0.5 text-amber-500">
@@ -121,7 +74,9 @@ export default function Reviews() {
             </span>
             <span className="text-sm text-neutral-800">{avg} average • {total}+ reviews</span>
           </div>
-          <LinkButton href="#" variant="secondary">Leave a Google Review</LinkButton>
+          <LinkButton href={(import.meta as any).env?.VITE_GOOGLE_REVIEW_URL || 'https://www.google.com/maps/search/?api=1&query=GoSafe%20Driving%20Hamilton%20ON'} variant="secondary" target="_blank">
+            Write a review on Google
+          </LinkButton>
         </div>
       </Section>
 
@@ -152,13 +107,7 @@ export default function Reviews() {
 
       {/* Static grid below */}
       <Section decorativeBlobs={false}>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((r) => (
-            <TestimonialCard key={r.id} name={r.name} rating={r.rating} date={r.date} isLocalGuide={r.isLocalGuide}>
-              <ReviewText text={r.text} />
-            </TestimonialCard>
-          ))}
-        </div>
+        <PaginatedReviews reviews={filtered} pageSize={3} />
       </Section>
 
       {/* Page CTA */}
@@ -181,7 +130,33 @@ export default function Reviews() {
         </div>
       </Section>
 
-      <TrainingGallery />
+      <Suspense fallback={null}>
+        <TrainingGallery />
+      </Suspense>
     </>
+  );
+}
+
+function PaginatedReviews({ reviews, pageSize = 3 }: { reviews: Review[]; pageSize?: number }) {
+  const [count, setCount] = useState(pageSize);
+  const slice = reviews.slice(0, count);
+  const hasMore = reviews.length > count;
+  return (
+    <div>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {slice.map((r) => (
+          <TestimonialCard key={r.id} name={r.name} rating={r.rating} date={r.date} isLocalGuide={r.isLocalGuide}>
+            <ReviewText text={r.text} />
+          </TestimonialCard>
+        ))}
+      </div>
+      {hasMore && (
+        <div className="mt-6 flex justify-center">
+          <LinkButton variant="secondary" href="#" onClick={(e: any) => { e.preventDefault(); setCount((c) => c + pageSize); }}>
+            Load more reviews
+          </LinkButton>
+        </div>
+      )}
+    </div>
   );
 }
